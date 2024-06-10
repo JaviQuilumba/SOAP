@@ -25,16 +25,5 @@ router.get('/movies', (req, res) => {
     res.send(xml);
 });
 
-// Pelicula ID
-router.get('/movies/:id', (req, res) => {
-    const movie = movies.find(m => m.id == req.params.id);
-    if (movie) {
-        const xml = builder.buildObject({ movie: { ...movie } });
-        res.type('application/xml');
-        res.send(xml);
-    } else {
-        res.status(404).send('<error>Movie not found</error>');
-    }
-});
 
 module.exports = router;
